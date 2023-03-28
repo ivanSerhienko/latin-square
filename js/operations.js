@@ -216,6 +216,8 @@ function fillPull() {
             divImageWrapper.setAttribute("id", `pull-bord-el${i}`)
             divImageWrapper.setAttribute("draggable", "true")
             divImageWrapper.setAttribute("ondragstart", "dragstart(event)")
+            divImageWrapper.ontouchstart = (ev) => dragstart(ev)
+            divImageWrapper.ontouchend = (ev) => drop(ev)
             td.appendChild(divImageWrapper)
 
             const img = new Image()
