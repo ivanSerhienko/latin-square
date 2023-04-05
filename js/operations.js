@@ -116,7 +116,7 @@ async function generate() {
     }
     else {
         dropDownField(labelsRadioButtons[0])
-        await new Promise(resolve => {setTimeout(resolve, 50)})
+        await new Promise(resolve => {setTimeout(resolve, 300)})
     }
 
     if (board.children.length !== 0)
@@ -153,7 +153,6 @@ async function generate() {
                     const img = new Image()
                     img.setAttribute("draggable", "false")
                     img.setAttribute("src", `${VALUES[initial_square[i][j] - 1]}`)
-                    console.log(img)
                     let h = img.naturalHeight
                     while (h >= height / Number(N)) h /= 2
                     img.setAttribute("style", `width: auto; height: ${h}px;`)
@@ -216,8 +215,9 @@ function fillPull() {
             divImageWrapper.setAttribute("id", `pull-bord-el${i}`)
             divImageWrapper.setAttribute("draggable", "true")
             divImageWrapper.setAttribute("ondragstart", "dragstart(event)")
-            divImageWrapper.ontouchstart = (ev) => dragstart(ev)
-            divImageWrapper.ontouchend = (ev) => drop(ev)
+            divImageWrapper.ontouchstart = (ev) => touchstart(ev)
+            divImageWrapper.ontouchmove = (ev) => touchmove(ev)
+            divImageWrapper.ontouchend = (event) => touchend(event)
             td.appendChild(divImageWrapper)
 
             const img = new Image()
@@ -234,6 +234,9 @@ function fillPull() {
             divStringWrapper.setAttribute("style", `width: ${width / Number(N)}px; height: ${height / Number(N)}px;`)
             divStringWrapper.setAttribute("draggable", "true")
             divStringWrapper.setAttribute("ondragstart", "dragstart(event)")
+            divStringWrapper.ontouchstart = (ev) => touchstart(ev)
+            divStringWrapper.ontouchmove = (ev) => touchmove(ev)
+            divStringWrapper.ontouchend = (event) => touchend(event)
             divStringWrapper.style.fontSize = `${200 / Number(N)}px`
             divStringWrapper.innerHTML = VALUES[i]
             td.appendChild(divStringWrapper)
@@ -455,7 +458,7 @@ function fillData() {
                     return
                 }
                 if(!allEnglishLetters.includes(selectedArray[i])) {
-                    lettersInputError("Вводи будь-ласка тільки англійські літери.")
+                    lettersInputError("Вводи будь-ласка тільки англійські маленькі літери.")
                     return;
                 }
                 for (let j = 0; j < selectedArray.length; j++) {
@@ -478,7 +481,7 @@ function fillData() {
                     return
                 }
                 if(!allUkrainianLetters.includes(selectedArray[i])) {
-                    lettersInputError("Вводи будь-ласка тільки українські літери.")
+                    lettersInputError("Вводи будь-ласка тільки українські маленькі літери.")
                     return;
                 }
                 for (let j = 0; j < selectedArray.length; j++) {
@@ -492,8 +495,6 @@ function fillData() {
             break
         }
     }
-
-    console.log(selectedArray)
 
     switch (true) {
         case selectedArray.length === 0: {
@@ -565,7 +566,6 @@ function fillData() {
             }
         }
     }
-    console.log(VALUES)
 }
 
 function lettersInputError(massage) {

@@ -56,6 +56,7 @@ function dropDownField(label) {
                 const img = document.createElement("img")
                 img.setAttribute("src", image)
                 img.setAttribute("selected", "false")
+                img.setAttribute("draggable", "false")
                 img.onclick = () => {
                     if (img.getAttribute("selected") === "false") {
                         img.classList.add("js-element-selected")
@@ -96,7 +97,7 @@ function dropDownField(label) {
             const input = document.createElement("input")
             input.setAttribute("type", "text")
             input.style.width = "93%"
-            input.setAttribute("placeholder", "Введи українські літери через пробіл або кому.")
+            input.setAttribute("placeholder", "Введи українські маленькі літери через пробіл або кому.")
             dropDown.appendChild(input)
             input.addEventListener("click", inputListener)
             break
@@ -106,7 +107,7 @@ function dropDownField(label) {
             const input = document.createElement("input")
             input.setAttribute("type", "text")
             input.style.width = "93%"
-            input.setAttribute("placeholder", "Введи англійські літери через пробіл або кому.")
+            input.setAttribute("placeholder", "Введи англійські маленькі літери через пробіл або кому.")
             dropDown.appendChild(input)
             input.addEventListener("click", inputListener)
             break
