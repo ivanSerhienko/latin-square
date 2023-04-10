@@ -99,7 +99,7 @@ function dropDownField(label) {
             input.style.width = "93%"
             input.setAttribute("placeholder", "Введи українські маленькі літери через пробіл або кому.")
             dropDown.appendChild(input)
-            input.addEventListener("click", inputListener)
+            input.addEventListener("mousedown", inputListener)
             break
         }
         case "ENG_LETTERS": {
@@ -109,7 +109,7 @@ function dropDownField(label) {
             input.style.width = "93%"
             input.setAttribute("placeholder", "Введи англійські маленькі літери через пробіл або кому.")
             dropDown.appendChild(input)
-            input.addEventListener("click", inputListener)
+            input.addEventListener("mousedown", inputListener)
             break
         }
         default:

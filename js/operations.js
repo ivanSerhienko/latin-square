@@ -91,7 +91,7 @@ async function generate() {
     if (N === "")
         N = 3
 
-    if (N < 2 || N > 10 || !/(^|\s)\d+($|\s)/ig.test(N) /*|| isNaN(N)*/) {
+    if (N < 2 || N > 10 || !/^\s*\d+\s*$/ig.test(N)) {
         if (generateButton.innerHTML !== "Введіть число від 2 до 10")
             changeTextInGenerateButton()
 
