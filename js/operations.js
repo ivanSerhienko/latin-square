@@ -453,6 +453,7 @@ function fillData() {
             selectedArray = input.value.split(/\s|,/g)
             selectedArray = selectedArray.filter(el => el !== "")
             for (let i = 0; i < selectedArray.length; i++) {
+                selectedArray[i] = selectedArray[i].toLowerCase()
                 if (selectedArray[i].length !== 1) {
                     lettersInputError("Літера - один знак. Вводи будь-ласка по одному символу.")
                     return
@@ -476,6 +477,7 @@ function fillData() {
             selectedArray = input.value.split(/\s|,/g)
             selectedArray = selectedArray.filter(el => el !== "")
             for (let i = 0; i < selectedArray.length; i++) {
+                selectedArray[i] = selectedArray[i].toLowerCase()
                 if (selectedArray[i].length !== 1) {
                     lettersInputError("Літера - один знак. Вводи будь-ласка по одному символу.")
                     return
