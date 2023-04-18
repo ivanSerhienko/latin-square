@@ -17,7 +17,7 @@
         <div class="int-header__content">
             <h3 class="int-header__title">
                 <span>
-                    Обери порядок (розмір) квадрата, тип елементів та складність. Створи його натиснувши кнопку &quot;Створити&quot;.
+                    Обери порядок (розмір) квадрата та тип елементів. Створи його натиснувши кнопку &quot;Створити&quot;.
                     Перетягуванням заповни клітинки квадрата так, щоб кожен елемент зустрічався в кожному рядку та стовпчику тільки один раз.
                 </span>
             </h3>
@@ -33,7 +33,7 @@
 
 <main>
     <section id="latin-type">
-        <section id="radio-buttons-section" class="radio-check-area">
+        <section id="radio-buttons-section">
             <label tabindex="1">
                 <input type="radio" name="type" value="IMAGE">
                 <span class="inner" id="IMAGE"></span>
@@ -59,25 +59,7 @@
         </section>
     </section>
     <nav>
-        <section id="complexity-level" class="radio-check-area">
-            <span>Складність:</span>
-            <label tabindex="5">
-                <input type="radio" name="complexity" value="EASY_LEVEL">
-                <span class="inner" id="EASY_LEVEL"></span>
-                <span>Легк.</span>
-            </label>
-            <label tabindex="6">
-                <input type="radio" name="complexity" value="MEDIUM_LEVEL">
-                <span class="inner" id="MEDIUM_LEVEL"></span>
-                <span>Сер.</span>
-            </label>
-            <label tabindex="7">
-                <input type="radio" name="complexity" value="HARD_LEVEL">
-                <span class="inner" id="HARD_LEVEL"></span>
-                <span>Важк.</span>
-            </label>
-        </section>
-        <label id="order-label">Порядок:
+        <label>Порядок:
             <input name="order" id="order" inputmode="numeric" min="2" max="10" placeholder="3"/>
         </label>
         <button type="button" class="cta cta-primary" id="generate" onclick="generate()">Створити</button>

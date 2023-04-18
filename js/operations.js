@@ -5,7 +5,6 @@ let VALUES = allImages
 const width = 320 // 455 350
 const height = 260
 const board = document.getElementById("board")
-let COMPLEXITY_TYPE = "MEDIUM_LEVEL"
 let TYPE = "IMAGE"
 let latin_square_obj
 let initial_square
@@ -125,38 +124,9 @@ async function generate() {
 
     latin_square_obj = new Latin(Number(N))
     initial_square = latin_square_obj.square
-
-    let min
-    let max
-    let coefficient
-    let step
-    switch (COMPLEXITY_TYPE) {
-        case "EASY_LEVEL": {
-            coefficient = 0.5 * Number(N)
-            step = Math.floor(Number(N) / 3 * coefficient)
-            min = Math.ceil(Number(N) / 3) + step
-            max = min + step
-            break
-        }
-        case "MEDIUM_LEVEL": {
-            coefficient = 0.5 * Number(N)
-            step = Math.floor(Number(N) / 3 * coefficient)
-            min = Number(N) + step
-            max = min + step
-            break
-        }
-        case "HARD_LEVEL": {
-            coefficient = 0.5 * Number(N)
-            step = Math.floor(Number(N) / 3 * coefficient)
-            min = Number(N) + Math.floor(coefficient) + step
-            max = min + step
-            break
-        }
-        default: throw new Error("unknown complexity level")
-    }
-
-    console.log(min + " " + max)
-    const holesAmount = random(min, max + 1)
+    const max = Math.floor(N ** 2 / 2) + Number(N)
+    const min = max - Number(N) - 1
+    const holesAmount = random(min, max)
     pokeHoles(initial_square, holesAmount, Number(N))
 
     const table = document.createElement("table")
@@ -419,7 +389,6 @@ function selectOneItem() {
 
     generateButton.classList.replace("cta-primary", "cta-primary-js-one-item")
     generateButton.innerHTML = "Виділіть будь-ласка тільки один елемент"
-    generateButton.style.fontSize = "0.8em"
     generateButton.style.width = "450px"
 
     checkButton.classList.replace("cta-primary", "cta-primary-js-one-item")
@@ -451,7 +420,6 @@ function restoreAfterSelectOneItem() {
 
     generateButton.classList.replace("cta-primary-js-one-item", "cta-primary")
     generateButton.innerHTML = "Створити"
-    generateButton.style.fontSize = "1.2em"
     generateButton.style.width = "156px"
 
     checkButton.classList.replace("cta-primary-js-one-item", "cta-primary")

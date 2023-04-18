@@ -24,7 +24,7 @@ body {
     position: relative;
     font-family: "IBM Plex Sans", Arial, sans-serif;
     width: 776px;
-    margin: 0.5em auto;
+    margin: 0.5rem auto;
     height: 600px;
     border: 1px solid #e0e0e0;
     overflow: hidden;
@@ -45,7 +45,7 @@ body {
 }
 
 .int-header__content {
-    padding: 0.8em;
+    padding: 0.8rem;
 }
 
 .int-header__title {
@@ -75,7 +75,7 @@ body {
     line-height: 1.5;
     text-align: left;
     font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     color: #4a4a4a;
     box-sizing: border-box;
     margin-left: auto;
@@ -104,7 +104,7 @@ body {
     box-shadow: none;
     -webkit-appearance: button;
     cursor: pointer;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     min-height: 55px;
     border-left: 0;
 }
@@ -170,19 +170,19 @@ main {
     height: 54px;
 }
 
-.radio-check-area {
+#radio-buttons-section{
     height: 26px;
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
 
-.radio-check-area label {
+#radio-buttons-section label {
     display: inherit;
     align-items: center;
 }
 
-.radio-check-area label input {
+#radio-buttons-section label input {
     display: none;
 }
 
@@ -223,7 +223,7 @@ main {
     opacity: var(--change-opacity);
 }
 
-.radio-check-area label input:checked + .inner::before {
+#radio-buttons-section label input:checked + .inner::before {
     opacity: 1;
 }
 
@@ -258,25 +258,14 @@ main nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 0 10px 4%;
+    padding: 10px 5%;
     border-bottom: 1px solid #e0e0e0;
-}
-
-#complexity-level {
-    font-size: 0.9em;
-    width: 30%;
-    margin-right: 20%;
-    align-items: center;
 }
 
 main nav label {
     align-items: inherit;
     display: inherit;
     margin: 0 10px;
-}
-
-#order-label {
-    font-size: 0.9em;
 }
 
 #order {
@@ -326,7 +315,7 @@ main nav button {
 }
 
 .quiz-label__content-inner {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 .quiz-label__content-inner:last-child, .quiz-label__content-inner :last-child {
@@ -427,7 +416,7 @@ table tr td {
 
 .int .cta, .int button {
     cursor: pointer;
-    font-size: 1.8em;
+    font-size: 1.8rem;
 }
 
 [type=reset], [type=submit], button, html [type=button] {
@@ -469,7 +458,7 @@ table tr td {
     border-radius: 25px;
     transition: all .2s;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     line-height: 1;
     text-align: center;
     cursor: pointer;

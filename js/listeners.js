@@ -1,6 +1,5 @@
 const fullscreenButton = document.getElementById("fullscreenButton");
-const labelsRadioButtons = Array.from(document.getElementById("radio-buttons-section").children)
-const labelsComplexityRadioButtons = document.querySelectorAll("#complexity-level label")
+const labelsRadioButtons = document.querySelectorAll(`main section label`)
 const orderInput = document.getElementById("order")
 const generateButton = document.getElementById("generate")
 const dropDown = document.getElementById("drop-down")
@@ -43,14 +42,6 @@ labelsRadioButtons.forEach(label => {
     label.onblur = (event) =>
         event.target.querySelector(".inner").style.setProperty("--change-opacity", "0")
     label.onclick = () => dropDownField(label)
-})
-
-labelsComplexityRadioButtons.forEach(label => {
-    label.onfocus = (event) =>
-        event.target.querySelector(".inner").style.setProperty("--change-opacity", "1")
-    label.onblur = (event) =>
-        event.target.querySelector(".inner").style.setProperty("--change-opacity", "0")
-    label.onclick = () => { COMPLEXITY_TYPE = label.children[0].value }
 })
 
 // Drop down field
@@ -201,12 +192,10 @@ function changeTextInGenerateButton() {
     if (generateButton.innerHTML === "Введіть число від 2 до 10") {
         generateButton.innerHTML = "Створити"
         generateButton.style.width = 298 + "px"
-        generateButton.style.fontSize = "1.2em"
         setTimeout(() => generateButton.style.width = 156 + "px", 0)
     } else {
         generateButton.innerHTML = "Введіть число від 2 до 10"
         generateButton.style.width = 156 + "px"
-        generateButton.style.fontSize = "0.9em"
         setTimeout(() => generateButton.style.width = 298 + "px", 0)
     }
 }
