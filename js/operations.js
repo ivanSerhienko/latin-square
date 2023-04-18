@@ -88,6 +88,15 @@ async function generate() {
         return proposedBoard;
     }
 
+    function isOneComplexityRadioButtonsSelected() {
+        let flag = false
+        for (const x of labelsComplexityRadioButtons) {
+            if(x.children[0].checked === true)
+                flag = true
+        }
+        return flag
+    }
+
     N = orderInput.value
     if (N === "")
         N = 3
@@ -122,6 +131,9 @@ async function generate() {
 
     if (board.children.length !== 0)
         board.removeChild(board.children[0])
+
+    if(!isOneComplexityRadioButtonsSelected())
+        labelsComplexityRadioButtons[1].children[0].checked = true
 
     latin_square_obj = new Latin(Number(N))
     initial_square = latin_square_obj.square
