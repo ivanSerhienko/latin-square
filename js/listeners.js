@@ -67,6 +67,9 @@ function dropDownField(label) {
                 img.setAttribute("selected", "false")
                 img.setAttribute("draggable", "false")
                 img.onclick = () => {
+                    if(generateButton.innerHTML !== "Створити")
+                        changeTextInGenerateButton("Створити")
+
                     if (img.getAttribute("selected") === "false") {
                         img.classList.add("js-element-selected")
                         img.setAttribute("selected", "true")
@@ -84,11 +87,14 @@ function dropDownField(label) {
             for (let i = 0; i < 10; i++) {
                 const div = document.createElement("div")
                 div.setAttribute("selected", "false")
-                div.innerText = i
+                div.innerText = i.toString()
                 div.style.cursor = "default"
                 div.classList.add("content-wrapper")
                 div.style.width = "30px"
                 div.onclick = () => {
+                    if(generateButton.innerHTML !== "Створити")
+                        changeTextInGenerateButton("Створити")
+
                     if (div.getAttribute("selected") === "false") {
                         div.classList.add("js-element-selected")
                         div.setAttribute("selected", "true")
@@ -131,6 +137,9 @@ function dropDownField(label) {
 }
 
 function inputListener(ev) {
+    if(generateButton.innerHTML !== "Створити")
+        changeTextInGenerateButton("Створити")
+
     if (ev.target.classList.contains("wrong-input")) {
         ev.target.classList.remove("wrong-input")
         ev.target.value = lastInput
@@ -193,20 +202,22 @@ function inputShow() {
 
 // Change text at generate button
 orderInput.onmousedown = () => {
-    if (generateButton.innerHTML === "Введіть число від 2 до 10")
-        changeTextInGenerateButton()
+    if (generateButton.innerHTML !== "Створити")
+        changeTextInGenerateButton("Створити")
 }
 
-function changeTextInGenerateButton() {
-    if (generateButton.innerHTML === "Введіть число від 2 до 10") {
-        generateButton.innerHTML = "Створити"
-        generateButton.style.width = 298 + "px"
+function changeTextInGenerateButton(text, fontSize = "0.9em") {
+    if (text === "Створити") {
+        generateButton.innerHTML = text
+        generateButton.style.width = 350 + "px"
         generateButton.style.fontSize = "1.2em"
+        generateButton.style.margin = "0 25px"
         setTimeout(() => generateButton.style.width = 156 + "px", 0)
     } else {
-        generateButton.innerHTML = "Введіть число від 2 до 10"
+        generateButton.innerHTML = text
         generateButton.style.width = 156 + "px"
-        generateButton.style.fontSize = "0.9em"
-        setTimeout(() => generateButton.style.width = 298 + "px", 0)
+        generateButton.style.fontSize = fontSize
+        generateButton.style.margin = "0 5px"
+        setTimeout(() => generateButton.style.width = 298/*298*/ + "px", 0)
     }
 }

@@ -103,7 +103,7 @@ async function generate() {
 
     if (N < 2 || N > 10 || !/^\s*\d+\s*$/ig.test(N)) {
         if (generateButton.innerHTML !== "Введіть число від 2 до 10")
-            changeTextInGenerateButton()
+            changeTextInGenerateButton("Введіть число від 2 до 10")
 
         if (lastN > 1 && lastN < 11) N = lastN
 
@@ -114,7 +114,7 @@ async function generate() {
         lastN = N
 
     if (generateButton.innerHTML === "Введіть число від 2 до 10")
-        changeTextInGenerateButton()
+        changeTextInGenerateButton("Створити")
 
     if (generateButton.innerHTML === "Виділіть будь-ласка тільки один елемент")
         restoreAfterSelectOneItem()
@@ -477,6 +477,11 @@ function fillData() {
     VALUES = []
     TYPE = dropDown.getAttribute("selectedType")
     let selectedArray = []
+    let isOrderSelected = false
+
+    if (orderInput.value !== "")
+        isOrderSelected = true
+
     switch (TYPE) {
         case "IMAGE": {
             Array.from(dropDown.children).forEach(el => {
@@ -564,52 +569,26 @@ function fillData() {
             }
             break
         }
-        case selectedArray.length === Number(N): {
+
+        case !isOrderSelected: {
+            if(selectedArray.length === 1) {
+                changeTextInGenerateButton("Обери щонайменше два елементи")
+                return;
+            }
+
+            VALUES = selectedArray
+            N = selectedArray.length.toString()
+            break
+        }
+
+        case selectedArray.length === Number(N) && isOrderSelected: {
             VALUES = selectedArray
             break
         }
-        case selectedArray.length > N: {
-            let max = selectedArray.length
-            for (let i = 0; i < N; i++) {
-                let rand = random(0, max)
-                VALUES.push(selectedArray[rand])
-                selectedArray.splice(rand, 1)
-                max--
-            }
-            break
-        }
-        case selectedArray.length < N: {
-            let elementArray
-            switch (TYPE) {
-                case "IMAGE": {
-                    elementArray = allImages
-                    break
-                }
-                case "NUMBERS": {
-                    elementArray = allNumbers
-                    break
-                }
-                case "UKR_LETTERS": {
-                    elementArray = allUkrainianLetters
-                    break
-                }
-                case "ENG_LETTERS": {
-                    elementArray = allEnglishLetters
-                    break
-                }
-            }
-            let remain = elementArray.filter(img => {
-                    return !selectedArray.includes(img)
-                }
-            )
-            let max = remain.length
-            VALUES = selectedArray
-            while (VALUES.length < N) {
-                let rand = random(0, max)
-                VALUES.push(remain[rand])
-                remain.splice(rand, 1)
-                max--
-            }
+
+        case selectedArray.length !== Number(N) && isOrderSelected: {
+            changeTextInGenerateButton("Обери кількість елементів відповідно до порядку квадрата", "0.7em")
+            return;
         }
     }
 }
